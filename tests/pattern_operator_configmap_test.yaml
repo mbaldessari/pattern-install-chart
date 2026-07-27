@@ -83,6 +83,25 @@ tests:
       - exists:
           path: data["gitops.argoRBAC"]
 
+  - it: Should not include gitops.customArgoYaml by default
+    asserts:
+      - notExists:
+          path: data["gitops.customArgoYaml"]
+
+  - it: Should set gitops.customArgoYaml
+    set:
+      main:
+        gitops:
+          customArgoYaml: |
+            controller:
+              resources:
+                limits:
+                  cpu: "4"
+                  memory: "16Gi"
+    asserts:
+      - exists:
+          path: data["gitops.customArgoYaml"]
+
   - it: Should set gitea parameters
     set:
       main:

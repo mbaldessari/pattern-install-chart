@@ -17,6 +17,10 @@ data:
   gitops.argoRBAC: |
 {{ .Values.main.gitops.argoRBAC | indent 4 }}
   {{- end }}
+  {{- if .Values.main.gitops.customArgoYaml }}
+  gitops.customArgoYaml: |
+{{ .Values.main.gitops.customArgoYaml | indent 4 }}
+  {{- end }}
 
   # gitops.sourceNamespace: GitOpsDefaultCatalogSourceNamespace
   # gitops.installApprovalPlan: GitOpsDefaultApprovalPlan
